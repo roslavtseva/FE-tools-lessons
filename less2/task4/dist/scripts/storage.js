@@ -1,8 +1,18 @@
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getItem = exports.setItem = void 0;
 
-export const setItem = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
+var setItem = function setItem(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const getItem = key => JSON.parse(localStorage.getItem(key));
+exports.setItem = setItem;
 
+var getItem = function getItem(key) {
+  return JSON.parse(localStorage.getItem(key));
+};
+
+exports.getItem = getItem;

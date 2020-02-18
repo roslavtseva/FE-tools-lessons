@@ -1,36 +1,47 @@
-import {renderTasks} from './renderer.js';
-import {getItem, setItem} from './storage.js';
-import { updateTask, getTasksList } from './tasksGateway.js';
+"use strict";
 
-export const onToggleTask = (e) => {
-    const isCheckBox = e.target.classList.contains('list-item__checkbox');
+require("core-js/modules/es.array.find");
 
-    if (!isCheckBox){
-        return;
-    }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.onToggleTask = void 0;
 
-    const taskId = e.target.dataset.id;
-    const tasksList = getItem('tasksList');
-    const {text, createDate} = tasksList
-            .find(task => task.id === taskId);
-     const done = e.target.checked;
+var _renderer = require("./renderer.js");
 
+var _storage = require("./storage.js");
 
-    const updatedTask = {
-        text,
-        createDate,
-        done,
-        finishDate: done
-            ? new Date().toISOString()
-            : null
-    };
+var _tasksGateway = require("./tasksGateway.js");
 
-    updateTask(taskId, updatedTask)
-        .then(() => getTasksList())
-        .then(newTasksList => {
-            setItem('tasksList', newTasksList );
-            renderTasks();
-        });
+var onToggleTask = function onToggleTask(e) {
+  var isCheckBox = e.target.classList.contains('list-item__checkbox');
 
-    
-}; 
+  if (!isCheckBox) {
+    return;
+  }
+
+  var taskId = e.target.dataset.id;
+  var tasksList = (0, _storage.getItem)('tasksList');
+
+  var _tasksList$find = tasksList.find(function (task) {
+    return task.id === taskId;
+  }),
+      text = _tasksList$find.text,
+      createDate = _tasksList$find.createDate;
+
+  var done = e.target.checked;
+  var updatedTask = {
+    text: text,
+    createDate: createDate,
+    done: done,
+    finishDate: done ? new Date().toISOString() : null
+  };
+  (0, _tasksGateway.updateTask)(taskId, updatedTask).then(function () {
+    return (0, _tasksGateway.getTasksList)();
+  }).then(function (newTasksList) {
+    (0, _storage.setItem)('tasksList', newTasksList);
+    (0, _renderer.renderTasks)();
+  });
+};
+
+exports.onToggleTask = onToggleTask;
