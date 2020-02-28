@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "clean": "rm -rf ./dist",
     "test:watch": "jest --watch",
     "copy:html": "cp ./src/index.html ./dist/index.html",
     "build:scripts": "webpack -p",
-    "clean": "rm -rf ./dist",
-    "build": "npm-run-all clean build:* copy:*",
-    "watch": "webpack -d --devtools eval-source-maps -w"
+    "watch": "webpack -d --devtools eval-source-maps -w",
+    "build": "npm-run-all clean build:* copy:*"
   },
   "keywords": [],
   "author": "",

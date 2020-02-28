@@ -1,4 +1,4 @@
-const baseUrl = 'https://crudcrud.com/api/7e0ad279ffe34f779f80ebd935f64aed/tasks';
+const baseUrl = 'https://crudcrud.com/api/85a971d18bef4d8cba22546c94e56eee/tasks';
 
 export { getTasksList, createTask, updateTask, deleteTask };
 
