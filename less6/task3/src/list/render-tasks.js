@@ -1,5 +1,5 @@
-import { getItem, setItem } from './storage.js';
 import { getTasksList } from './createGeteway.js';
+import { getItem, setItem } from './storage.js';
 
 import './index.scss';
 
